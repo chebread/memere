@@ -2,7 +2,7 @@ import './reset.css';
 import './app.css';
 import { router } from './components/router.js';
 import { routes } from './components/routes.js';
-
+// logics
 const app = () => {
   const render = () => {
     router(window.location.pathname);
