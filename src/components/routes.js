@@ -3,7 +3,7 @@ import { renderHTML } from './renderHTML.js';
 
 export const routes = {
   '/': {
-    route: () => renderHTML('memere', document.querySelector('#root')),
+    route: () => renderHTML('memere home', document.querySelector('#root')),
     title: 'memere',
   },
   '/404': {
