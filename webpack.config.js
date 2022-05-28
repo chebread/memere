@@ -76,7 +76,7 @@ export const webpackConfig = {
 const configWithSmp = new SpeedMeasurePlugin().wrap(webpackConfig);
 configWithSmp.plugins.push(
   new MiniCssExtractPlugin({
-    filename: '[name].css',
+    filename: nodeEnv === 'development' ? '[name].css' : '[name].[hash].css',
   })
 );
 export default configWithSmp;
