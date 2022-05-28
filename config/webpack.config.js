@@ -1,11 +1,11 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
-const { ESBuildMinifyPlugin } = require('esbuild-loader');
+import path from 'path';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
+import { ESBuildMinifyPlugin } from 'esbuild-loader';
 const nodeEnv = process.env.NODE_ENV || 'development';
-const config = {
+export const webpackConfig = {
   mode: nodeEnv === 'development' ? 'development' : 'production',
   entry: {
     main: './src/app.js',
@@ -71,10 +71,9 @@ const config = {
     new CleanWebpackPlugin(),
   ],
 };
-const configWithSmp = new SpeedMeasurePlugin().wrap(config);
+const configWithSmp = new SpeedMeasurePlugin().wrap(webpackConfig);
 configWithSmp.plugins.push(
   new MiniCssExtractPlugin({
     filename: '[name].css',
   })
 );
-module.exports = configWithSmp;

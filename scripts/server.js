@@ -1,12 +1,15 @@
-const express = require('express');
-const webpack = require('webpack');
-const webpackConfig = require('../config/webpack.config.js');
+import express from 'express';
+import webpack from 'webpack';
+import path from 'path';
+import { webpackConfig } from '../config/webpack.config.js';
+import middleware from 'webpack-dev-middleware';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const compiler = webpack(webpackConfig);
-const path = require('path');
 const app = express();
 const nodeEnv = process.env.NODE_ENV || 'development';
 app.use(
-  require('webpack-dev-middleware')(compiler, {
+  middleware(compiler, {
     publicPath: webpackConfig.output.publicPath,
     stats: { colors: true },
   })
@@ -21,8 +24,7 @@ app.use((req, res, next) => {
       }
     );
     return;
-  }
-  if (nodeEnv === 'production') {
+  } else {
     res.sendFile(path.join(__dirname, './index.html'));
   }
 });
