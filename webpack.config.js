@@ -1,20 +1,14 @@
-import path from 'path';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
-import { ESBuildMinifyPlugin } from 'esbuild-loader';
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 const nodeEnv = process.env.NODE_ENV || 'development';
-export const webpackConfig = {
+const config = {
   mode: nodeEnv === 'development' ? 'development' : 'production',
   entry: {
     main: './src/app.js',
-  },
-  resolve: {
-    fallback: {
-      fs: false,
-      path: false,
-    },
   },
   output: {
     path: path.resolve('./dist'),
@@ -42,14 +36,6 @@ export const webpackConfig = {
           'css-loader',
         ],
       },
-      {
-        test: /\.(png|jpe?g|gif)$/,
-        loader: 'url-loader',
-        options: {
-          name: '[name].[ext]?[hash]',
-          limit: 20000,
-        },
-      },
     ],
   },
   optimization: {
@@ -68,15 +54,13 @@ export const webpackConfig = {
         removeComments: true,
       },
     }),
-    new CleanWebpackPlugin({
-      cleanAfterEveryBuildPatterns: ['dist'],
-    }),
+    new CleanWebpackPlugin(),
   ],
 };
-const configWithSmp = new SpeedMeasurePlugin().wrap(webpackConfig);
+const configWithSmp = new SpeedMeasurePlugin().wrap(config);
 configWithSmp.plugins.push(
   new MiniCssExtractPlugin({
     filename: '[name].css',
   })
 );
-export default configWithSmp;
+module.exports = configWithSmp;

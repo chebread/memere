@@ -21,6 +21,5 @@
     "webpack-cli": "^4.9.2",
     "webpack-dev-middleware": "^5.3.3"
   },
-  "license": "MIT",
-  "type": "module"
+  "license": "MIT"
 }
