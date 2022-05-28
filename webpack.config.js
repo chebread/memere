@@ -77,3 +77,4 @@ configWithSmp.plugins.push(
     filename: '[name].css',
   })
 );
+export default configWithSmp;

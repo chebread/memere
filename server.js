@@ -1,7 +1,7 @@
 import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
-import { webpackConfig } from '../config/webpack.config.js';
+import { webpackConfig } from './webpack.config.js';
 import middleware from 'webpack-dev-middleware';
 import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -24,8 +24,7 @@ app.use((req, res, next) => {
       }
     );
     return;
-  }
-  if (nodeEnv === 'production') {
+  } else {
     res.sendFile(path.join(__dirname, './index.html'));
   }
 });
