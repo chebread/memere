@@ -68,7 +68,9 @@ export const webpackConfig = {
         removeComments: true,
       },
     }),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['dist'],
+    }),
   ],
 };
 const configWithSmp = new SpeedMeasurePlugin().wrap(webpackConfig);
