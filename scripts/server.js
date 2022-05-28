@@ -1,7 +1,7 @@
 import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
-import { webpackConfig } from './webpack.config.js';
+import { webpackConfig } from '../webpack.config.js';
 import middleware from 'webpack-dev-middleware';
 import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

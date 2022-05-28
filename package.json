@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "NODE_ENV=production webpack",
-    "start": "node server.js"
+    "start": "node scripts/server.js"
   },
   "dependencies": {
     "clean-webpack-plugin": "^4.0.0",

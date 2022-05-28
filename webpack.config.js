@@ -4,20 +4,20 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import ESBuildMinifyPlugin from 'esbuild-loader';
+import { fileURLToPath } from 'url';
 const nodeEnv = process.env.NODE_ENV || 'development';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const webpackConfig = {
   mode: nodeEnv === 'development' ? 'development' : 'production',
   entry: {
     main: './src/app.js',
   },
   resolve: {
-    fallback: {
-      fs: false,
-      path: false,
-    },
+    extensions: ['js'],
   },
+  devtool: 'eval',
   output: {
-    path: path.resolve('./dist'),
+    path: path.resolve(__dirname, './dist'),
     filename: '[name].js',
     publicPath: '/',
   },
@@ -43,7 +43,7 @@ export const webpackConfig = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif)$/,
+        test: /\.(png|jpe?g|gif|ico)$/,
         loader: 'url-loader',
         options: {
           name: '[name].[ext]?[hash]',

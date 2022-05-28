@@ -1,9 +1,9 @@
+import { home } from '../routes/home.js';
 import { notFoundPage } from '../routes/notFoundPage.js';
-import { renderHTML } from './renderHTML.js';
 
 export const routes = {
   '/': {
-    route: () => renderHTML('memere home', document.querySelector('#root')),
+    route: home,
     title: 'memere',
   },
   '/404': {

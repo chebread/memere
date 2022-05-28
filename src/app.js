@@ -3,6 +3,8 @@ import './app.css';
 import { router } from './components/router.js';
 
 const app = () => {
+  // render specific route
+
   const render = () => {
     router(window.location.pathname);
     document.addEventListener('DOMContentLoaded', () => {
