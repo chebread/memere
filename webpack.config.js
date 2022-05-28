@@ -3,7 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
-import { ESBuildMinifyPlugin } from 'esbuild-loader';
+import ESBuildMinifyPlugin from 'esbuild-loader';
 const nodeEnv = process.env.NODE_ENV || 'development';
 export const webpackConfig = {
   mode: nodeEnv === 'development' ? 'development' : 'production',
@@ -54,7 +54,7 @@ export const webpackConfig = {
   },
   optimization: {
     minimizer: [
-      new ESBuildMinifyPlugin({
+      new ESBuildMinifyPlugin.ESBuildMinifyPlugin({
         target: 'es2015',
         css: true,
       }),
