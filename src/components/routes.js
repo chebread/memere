@@ -3,8 +3,8 @@ import { renderHTML } from './renderHTML.js';
 
 export const routes = {
   '/': {
-    route: () => renderHTML('home', document.querySelector('#root')),
-    title: 'Haneum Blog',
+    route: () => renderHTML('memere', document.querySelector('#root')),
+    title: 'memere',
   },
   '/404': {
     route: notFoundPage,

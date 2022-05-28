@@ -10,6 +10,12 @@ const config = {
   entry: {
     main: './src/app.js',
   },
+  resolve: {
+    fallback: {
+      fs: false,
+      path: false,
+    },
+  },
   output: {
     path: path.resolve('./dist'),
     filename: '[name].js',
