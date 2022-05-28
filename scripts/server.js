@@ -24,7 +24,8 @@ app.use((req, res, next) => {
       }
     );
     return;
-  } else {
+  }
+  if (nodeEnv === 'production') {
     res.sendFile(path.join(__dirname, './index.html'));
   }
 });
