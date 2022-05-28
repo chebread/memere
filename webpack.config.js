@@ -69,6 +69,7 @@ export const webpackConfig = {
       },
     }),
     new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['dist'],
       esModuleInterop: true,
     }),
   ],
