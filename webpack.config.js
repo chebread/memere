@@ -1,6 +1,6 @@
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import { ESBuildMinifyPlugin } from 'esbuild-loader';
@@ -68,7 +68,7 @@ export const webpackConfig = {
         removeComments: true,
       },
     }),
-    new CleanWebpackPlugin({
+    new CleanWebpackPlugin.CleanWebpackPlugin({
       esModuleInterop: true,
     }),
   ],
