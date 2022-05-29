@@ -8,7 +8,7 @@ import ESBuildMinifyPlugin from 'esbuild-loader';
 import WebpackManifestPlugin from 'webpack-manifest-plugin';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
-export const webpackConfig = webpackEnv => {
+export const webpackConfig = (webpackEnv = 'production') => {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
   return {
