@@ -5,7 +5,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import ESBuildMinifyPlugin from 'esbuild-loader';
-import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
+import WebpackManifestPlugin from 'webpack-manifest-plugin';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 export const webpackConfig = webpackEnv => {
@@ -91,7 +91,7 @@ export const webpackConfig = webpackEnv => {
       new CleanWebpackPlugin.CleanWebpackPlugin({
         esModuleInterop: true,
       }),
-      new WebpackManifestPlugin({
+      new WebpackManifestPlugin.WebpackManifestPlugin({
         fileName: 'manifest.json',
         publicPath: paths.publicPath,
       }),
