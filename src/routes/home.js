@@ -4,7 +4,6 @@ export const home = () => {
   const render = () => {
     const contentMsg = `
       <div>
-        Memere
       </div>
     `;
     renderHTML(contentMsg, document.querySelector('#root'));
