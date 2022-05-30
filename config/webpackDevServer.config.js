@@ -16,7 +16,7 @@ export const devServerConfig = () => {
       disableDotRule: true,
       index: paths.publicPath,
     },
-    port: port,
+    port,
     open: true,
   };
 };

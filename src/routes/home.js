@@ -1,10 +1,8 @@
 import { renderHTML } from '../components/renderHTML.js';
-
 export const home = () => {
   const render = () => {
     const contentMsg = `
-      <div>
-      </div>
+      welcome to memere
     `;
     renderHTML(contentMsg, document.querySelector('#root'));
   };
