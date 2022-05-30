@@ -9,6 +9,16 @@ const appBuild = resolvePath('dist');
 const appHtml = resolvePath('index.html');
 const appAppJs = resolvePath('src/app.js');
 const appSrc = resolvePath('src');
-const appPackageJson = resolvePath('package.json');
+const appNodeModules = resolvePath('node_modules');
+const moduleFileExtensions = ['web.mjs', 'mjs', 'web.js', 'js', 'json'];
 
-export default { publicPath, appPath, appBuild, appHtml, appAppJs, appSrc };
+export default {
+  publicPath,
+  appPath,
+  appBuild,
+  appHtml,
+  appAppJs,
+  appSrc,
+  appNodeModules,
+  moduleFileExtensions,
+};

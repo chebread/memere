@@ -6,6 +6,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ESBuildMinifyPlugin from 'esbuild-loader';
 import WebpackManifestPlugin from 'webpack-manifest-plugin';
 
+console.log(paths.appNodeModules);
 export const webpackConfig = webpackEnv => {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
@@ -46,14 +47,15 @@ export const webpackConfig = webpackEnv => {
       ],
     },
     resolve: {
-      extensions: ['.js', '.mjs'],
+      modules: ['node_modules', paths.appNodeModules],
+      extensions: paths.moduleFileExtensions.map(ext => `.${ext}`),
     },
     module: {
       rules: [
         {
           test: /\.js$/,
           loader: 'esbuild-loader',
-          exclude: /node_modules/,
+          exclude: paths.appNodeModules,
           options: {
             target: 'es2015',
           },
