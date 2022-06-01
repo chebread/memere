@@ -15,7 +15,7 @@ export const devServerConfig = () => {
     client: {
       logging: 'none',
       overlay: true,
-      // webSocketURL: 'ws://localhost:8080/ws',
+      webSocketURL: 'ws://localhost:8080/ws',
     },
     historyApiFallback: {
       disableDotRule: true,
