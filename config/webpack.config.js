@@ -81,13 +81,22 @@ export const webpackConfig = webpackEnv => {
       ],
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        template: './index.html',
-        minify: {
-          collapseWhitespace: true,
-          removeComments: true,
-        },
-      }),
+      new HtmlWebpackPlugin(
+        Object.assign(
+          {
+            inject: true,
+            template: paths.appHtml,
+          },
+          isEnvProduction
+            ? {
+                minify: {
+                  collapseWhitespace: true,
+                  removeComments: true,
+                },
+              }
+            : undefined
+        )
+      ),
       new CleanWebpackPlugin.CleanWebpackPlugin({
         esModuleInterop: true,
       }),

@@ -10,7 +10,7 @@ const configWithSmp = new SpeedMeasurePlugin().wrap(config);
 // development 환경에서는 mini css extract plugin을 사용하지 않기때문에 설정을 해주지 않음
 // 다만 smp는 사용하기에 추가해줬음.
 const compiler = webpack(configWithSmp);
-const devServer = new WebpackDevServer(compiler, serverConfig);
+const devServer = new WebpackDevServer(serverConfig, compiler);
 const runServer = async () => {
   await devServer.start();
 };

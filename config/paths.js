@@ -6,11 +6,12 @@ const resolvePath = relativePath => path.resolve(appDirectory, relativePath); //
 const publicPath = '/';
 const appPath = resolvePath('.');
 const appBuild = resolvePath('dist');
-const appHtml = resolvePath('index.html');
+const appHtml = resolvePath('public/index.html');
 const appAppJs = resolvePath('src/app.js');
 const appSrc = resolvePath('src');
 const appNodeModules = resolvePath('node_modules');
 const moduleFileExtensions = ['web.mjs', 'mjs', 'web.js', 'js', 'json'];
+const appPublic = resolvePath('public');
 
 export default {
   publicPath,
@@ -21,4 +22,5 @@ export default {
   appSrc,
   appNodeModules,
   moduleFileExtensions,
+  appPublic,
 };
