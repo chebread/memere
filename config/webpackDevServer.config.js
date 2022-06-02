@@ -21,6 +21,5 @@ export const devServerConfig = () => {
       index: paths.publicPath,
     },
     port,
-    open: true,
   };
 };

@@ -1,12 +1,10 @@
 import path from 'path';
 import paths from './paths.js';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ESBuildMinifyPlugin from 'esbuild-loader';
 import WebpackManifestPlugin from 'webpack-manifest-plugin';
 
-console.log(paths.appNodeModules);
 export const webpackConfig = webpackEnv => {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
@@ -70,7 +68,7 @@ export const webpackConfig = webpackEnv => {
           ],
         },
         {
-          test: /\.(png|jpe?g|gif|ico)$/,
+          test: /\.(png|jpe?g|gif|ico|svg)$/,
           loader: 'url-loader',
           exclude: [/\.(js|mjs)$/, /\.html$/, /\.json$/],
           options: {
@@ -90,16 +88,21 @@ export const webpackConfig = webpackEnv => {
           isEnvProduction
             ? {
                 minify: {
-                  collapseWhitespace: true,
                   removeComments: true,
+                  collapseWhitespace: true,
+                  removeRedundantAttributes: true,
+                  useShortDoctype: true,
+                  removeEmptyAttributes: true,
+                  removeStyleLinkTypeAttributes: true,
+                  keepClosingSlash: true,
+                  minifyJS: true,
+                  minifyCSS: true,
+                  minifyURLs: true,
                 },
               }
             : undefined
         )
       ),
-      new CleanWebpackPlugin.CleanWebpackPlugin({
-        esModuleInterop: true,
-      }),
       new WebpackManifestPlugin.WebpackManifestPlugin({
         fileName: 'manifest.json',
         publicPath: paths.publicPath,
