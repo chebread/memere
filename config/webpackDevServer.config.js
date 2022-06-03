@@ -4,7 +4,7 @@ import paths from './paths.js';
 
 // const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const port = process.env.PORT || 8080;
-export const devServerConfig = () => {
+const devServerConfig = () => {
   return {
     compress: true,
     hot: true,
@@ -23,3 +23,5 @@ export const devServerConfig = () => {
     port,
   };
 };
+
+export default devServerConfig;

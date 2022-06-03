@@ -5,7 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ESBuildMinifyPlugin from 'esbuild-loader';
 import WebpackManifestPlugin from 'webpack-manifest-plugin';
 
-export const webpackConfig = webpackEnv => {
+const webpackConfig = webpackEnv => {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
   return {
@@ -40,6 +40,10 @@ export const webpackConfig = webpackEnv => {
       minimizer: [
         new ESBuildMinifyPlugin.ESBuildMinifyPlugin({
           target: 'es2015',
+          minifyWhitespace: true,
+          minifyIdentifiers: true,
+          minifySyntax: true,
+          sourcemap: true,
           css: true,
         }),
       ],
@@ -59,7 +63,7 @@ export const webpackConfig = webpackEnv => {
           },
         },
         {
-          test: /\.css$/,
+          test: /\.css$/i,
           use: [
             isEnvProduction
               ? { loader: MiniCssExtractPlugin.loader }
@@ -110,3 +114,5 @@ export const webpackConfig = webpackEnv => {
     ],
   };
 };
+
+export default webpackConfig;
