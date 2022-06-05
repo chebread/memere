@@ -13,12 +13,12 @@ const webpackConfig = webpackEnv => {
     bail: isEnvProduction,
     devtool: isEnvProduction
       ? 'source-map'
-      : isEnvDevelopment && 'cheap-module-source-map',
+      : isEnvDevelopment && 'cheap-module-source-map', // referenced by esbuild-loader
     entry: {
-      main: paths.appAppJs,
+      main: paths.appAppJs, // src directory
     },
     output: {
-      path: isEnvProduction ? paths.appBuild : undefined,
+      path: isEnvProduction ? paths.appBuild : undefined, // undefined when development mode
       pathinfo: isEnvDevelopment,
       filename: isEnvProduction
         ? '[name].[hash:8].js'
@@ -27,7 +27,7 @@ const webpackConfig = webpackEnv => {
         ? '[name].[hash:8].chunk.js'
         : isEnvDevelopment && '[name].chunk.js',
       publicPath: paths.publicPath,
-      devtoolModuleFilenameTemplate: isEnvProduction
+      devtoolModuleFilenameTemplate: isEnvProduction // ?
         ? info =>
             path
               .relative(paths.appSrc, info.absoluteResourcePath)
@@ -42,9 +42,9 @@ const webpackConfig = webpackEnv => {
           target: 'es2015',
           minifyWhitespace: true,
           minifyIdentifiers: true,
-          minifySyntax: true,
-          sourcemap: true,
-          css: true,
+          minifySyntax: true, // ?
+          sourcemap: true, // source map use
+          css: true, // css optimization
         }),
       ],
     },
@@ -101,7 +101,7 @@ const webpackConfig = webpackEnv => {
                   keepClosingSlash: true,
                   minifyJS: true,
                   minifyCSS: true,
-                  minifyURLs: true,
+                  minifyURLs: true, // ?
                 },
               }
             : undefined
