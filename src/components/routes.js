@@ -1,10 +1,10 @@
-import { home } from '../routes/home.js';
+import { create } from '../routes/create.js';
 import { notFoundPage } from '../routes/notFoundPage.js';
 import { help } from '../routes/help.js';
 
 export const routes = {
   '/': {
-    route: home,
+    route: create,
     title: 'memere',
   },
   '/404': {
