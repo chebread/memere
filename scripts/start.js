@@ -11,7 +11,7 @@ const configWithSmp = new SpeedMeasurePlugin().wrap(config);
 // 다만 smp는 사용하기에 추가해줬음.
 const compiler = webpack(configWithSmp);
 const devServer = new WebpackDevServer(serverConfig, compiler);
-const runServer = async () => {
-  await devServer.start();
+const runServer = () => {
+  devServer.start();
 };
 runServer();

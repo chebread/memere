@@ -3,9 +3,11 @@ import { render } from './render.js';
 
 export const router = path => {
   if (!(path === window.location.pathname)) {
-    window.history.pushState(null, null, window.location.origin + path);
+    const url = window.location.origin + path;
+    window.history.pushState(null, null, url);
   }
-  if (!routes[path]) {
+  const noRoutes = !routes[path];
+  if (noRoutes === true) {
     if (!(path === '/')) {
       render('/404');
     }

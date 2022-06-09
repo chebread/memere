@@ -1,16 +1,11 @@
-import { create } from '../routes/create.js';
 import { notFoundPage } from '../routes/notFoundPage.js';
 import { help } from '../routes/help.js';
 import { imgSelection } from '../routes/imgSelection.js';
+import { create } from '../routes/create.js';
 
 export const routes = {
   '/': {
     route: imgSelection,
-    title: 'memere',
-  },
-  '/create': {
-    route: create,
-    title: 'Create',
   },
   '/404': {
     route: notFoundPage,
